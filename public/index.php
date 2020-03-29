@@ -3,13 +3,12 @@
 require "../vendor/autoload.php";
 
 use src\controllers\Home;
+use src\controllers\About;
 use Slim\Factory\AppFactory;
-use src\classes\Container;
 
 $app = AppFactory::create();
 
-Container::set_instance('app', $app);
-
 $app->get('/', Home::class . ':index');
+$app->get('/about', About::class . ':index');
 
 $app->run();
