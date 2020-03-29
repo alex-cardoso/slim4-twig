@@ -1,0 +1,5 @@
+{% if logged %}
+    Bem vindo {{ user.name }} | <a href="/logout">Logout</a>
+{% else %}    
+    Bem vindo visitante | <a href="/login">Login</a> 
+{% endif %}

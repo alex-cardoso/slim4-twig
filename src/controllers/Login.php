@@ -47,6 +47,13 @@ class Login extends Base
 
         $_SESSION['logged'] = true;
         $_SESSION['user'] = $userFound;
-        return $response->withSTatus(301)->withHeader('Location', '/');
+        return $response->withSTatus(200)->withHeader('Location', '/');
+    }
+
+    public function destroy($request, $response)
+    {
+        unset($_SESSION['logged']);
+        unset($_SESSION['user']);
+        return $response->withSTatus(200)->withHeader('Location', '/');
     }
 }
