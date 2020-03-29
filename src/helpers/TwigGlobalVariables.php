@@ -2,7 +2,7 @@
 
 namespace src\helpers;
 
-class VariablesToTemplate
+class TwigGlobalVariables
 {
     protected static $variables = [];
 

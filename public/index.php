@@ -10,15 +10,15 @@ use src\controllers\Login;
 // Slim
 use Slim\Factory\AppFactory;
 // Helpers
-use src\helpers\VariablesToTemplate;
+use src\helpers\TwigGlobalVariables;
 // middlewares
 use src\middlewares\RedirectIfLogged;
 
 $app = AppFactory::create();
 
 // Global Variables
-VariablesToTemplate::setVariable('logged', $_SESSION['logged'] ?? null);
-VariablesToTemplate::setVariable('user', $_SESSION['user'] ?? null);
+TwigGlobalVariables::setVariable('logged', $_SESSION['logged'] ?? null);
+TwigGlobalVariables::setVariable('user', $_SESSION['user'] ?? null);
 
 $app->get('/', Home::class . ':index');
 $app->get('/about', About::class . ':index');
