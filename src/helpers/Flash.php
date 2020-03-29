@@ -2,7 +2,7 @@
 
 namespace src\helpers;
 
-class Errors
+class Flash
 {
 
     public static function setError($key, $value)

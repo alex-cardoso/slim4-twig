@@ -4,7 +4,7 @@ namespace src\controllers;
 
 use src\controllers\Base;
 use src\database\models\User;
-use src\helpers\Errors;
+use src\helpers\Flash;
 
 class Login extends Base
 {
@@ -18,7 +18,7 @@ class Login extends Base
 
     public function index($request, $response, $args)
     {
-        $error = Errors::getError('login');
+        $error = Flash::getError('login');
 
         return $this->getTwig()->render($response, 'login.twig', [
             'title' => 'Login',
@@ -34,14 +34,14 @@ class Login extends Base
         $userFound = $this->user->findUserBy('email', $email);
 
         if (!$userFound) {
-            Errors::setError('login', 'Usuário ou senha inválidos');
+            Flash::setError('login', 'Usuário ou senha inválidos');
             return $response->withSTatus(301)->withHeader('Location', '/login');
         }
 
         $userPasswordVerified = password_verify($password, $userFound->password);
 
         if (!$userPasswordVerified) {
-            Errors::setError('login', 'Usuário ou senha inválidos');
+            Flash::setError('login', 'Usuário ou senha inválidos');
             return $response->withSTatus(301)->withHeader('Location', '/login');
         }
 
