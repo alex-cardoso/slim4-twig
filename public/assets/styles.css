@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap");
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+}
+
+ul#menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}

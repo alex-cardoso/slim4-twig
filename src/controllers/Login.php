@@ -20,7 +20,7 @@ class Login extends Base
     {
         $error = Flash::getError('login');
 
-        return $this->getTwig()->render($response, 'login.twig', [
+        return $this->getTwig()->render($response, 'login.html', [
             'title' => 'Login',
             'error' => $error
         ]);
@@ -35,19 +35,19 @@ class Login extends Base
 
         if (!$userFound) {
             Flash::setError('login', 'Usuário ou senha inválidos');
-            return $response->withSTatus(301)->withHeader('Location', '/login');
+            return $response->withStatus(301)->withHeader('Location', '/login');
         }
 
         $userPasswordVerified = password_verify($password, $userFound->password);
 
         if (!$userPasswordVerified) {
             Flash::setError('login', 'Usuário ou senha inválidos');
-            return $response->withSTatus(301)->withHeader('Location', '/login');
+            return $response->withStatus(301)->withHeader('Location', '/login');
         }
 
         $_SESSION['logged'] = true;
         $_SESSION['user'] = $userFound;
-        return $response->withSTatus(200)->withHeader('Location', '/');
+        return $response->withStatus(200)->withHeader('Location', '/');
     }
 
     public function destroy($request, $response)

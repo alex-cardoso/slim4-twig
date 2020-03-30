@@ -8,7 +8,7 @@ class Home extends Base
 {
     public function index($request, $response, $args)
     {
-        return $this->getTwig()->render($response, 'home.twig', [
+        return $this->getTwig()->render($response, 'home.html', [
             'title' => 'Home',
         ]);
     }
