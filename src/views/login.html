@@ -1,8 +1,8 @@
-{% extends "master.html" %} {% block content %}
+{% extends "master.html" %} {% block container %}
 
 <h2>Login</h2>
 
-{{ error }}
+{{ error }} {% if logged %} Você já está logado{% else %}
 
 <form method="post" action="/login">
   <div class="form-group">
@@ -11,7 +11,6 @@
       type="text"
       class="form-control"
       name="email"
-      id=""
       aria-describedby="helpId"
       placeholder=""
     />
@@ -24,7 +23,6 @@
       type="password"
       class="form-control"
       name="password"
-      id=""
       aria-describedby="helpId"
       placeholder=""
     />
@@ -33,5 +31,4 @@
 
   <button type="submit" class="btn btn-primary">Logar</button>
 </form>
-
-{% endblock %}
+{% endif %} {% endblock %}
