@@ -3,15 +3,15 @@
 use src\controllers\Home;
 use src\controllers\About;
 use src\controllers\Login;
+use src\middlewares\Before;
 use Slim\Factory\AppFactory;
 use src\controllers\NotFound;
-use src\middlewares\RedirectIfLogged;
 
 $app = AppFactory::create();
 
-$app->get('/', Home::class . ':index');
+$app->get('/', Home::class . ':index')->add(new Before);
 $app->get('/about', About::class . ':index');
-$app->get('/login', Login::class . ':index')->add(new RedirectIfLogged);
+$app->get('/login', Login::class . ':index');
 $app->post('/login', Login::class . ':store');
 $app->get('/logout', Login::class . ':destroy');
 $app->get('/404', NotFound::class . ':index');
